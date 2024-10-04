@@ -2,67 +2,67 @@
 #include "Soundex.h"
 
 TEST(SoundexTestsuite, ReplacesConsonantsWithAppropriateDigits) {
-    char soundexCode[5];
-    generateSoundex("AX", soundexCode);
-    ASSERT_STREQ(soundexCode, "A200");
+    char soundex[5];
+    generateSoundex("AX", soundex);
+    ASSERT_STREQ(soundex, "A200");
 }
 
 TEST(SoundexTestsuite, RetainsSoleLetterOfOneLetterWord) {
-    char soundexCode[5];
-    generateSoundex("A", soundexCode);
-    ASSERT_STREQ(soundexCode, "A000");
+    char soundex[5];
+    generateSoundex("A", soundex);
+    ASSERT_STREQ(soundex, "A000");
 }
 
 TEST(SoundexTestsuite, PadsWithZerosToEnsureThreeDigits) {
-    char soundexCode[5];
-    generateSoundex("I", soundexCode);
-    ASSERT_STREQ(soundexCode, "I000");
+    char soundex[5];
+    generateSoundex("I", soundex);
+    ASSERT_STREQ(soundex, "I000");
 }
 
 TEST(SoundexTestsuite, CombinesDuplicateEncodingsSeparatedByVowels) {
-    char soundexCode[5];
-    generateSoundex("Abfcg", soundexCode);
-    ASSERT_STREQ(soundexCode, "A120");
+    char soundex[5];
+    generateSoundex("Abfcg", soundex);
+    ASSERT_STREQ(soundex, "A120");
 }
 
 TEST(SoundexTestsuite, UppercasesFirstLetter) {
-    char soundexCode[5];
-    generateSoundex("abcd", soundexCode);
-    ASSERT_STREQ(soundexCode, "A123");
+    char soundex[5];
+    generateSoundex("abcd", soundex);
+    ASSERT_STREQ(soundex, "A123");
 }
 
 TEST(SoundexTestsuite, IgnoresCaseWhenEncodingConsonants) {
-    char soundexCode[5];
-    generateSoundex("BCDL", soundexCode);
-    ASSERT_STREQ(soundexCode, "B234");
+    char soundex[5];
+    generateSoundex("BCDL", soundex);
+    ASSERT_STREQ(soundex, "B234");
 }
 
 TEST(SoundexTestsuite, HandlesEmptyString) {
-    char soundexCode[5];
-    generateSoundex("", soundexCode);
-    ASSERT_STREQ(soundexCode, "");
+    char soundex[5];
+    generateSoundex("", soundex);
+    ASSERT_STREQ(soundex, "");
 }
 
 TEST(SoundexTestsuite, HandlesNullString) {
-    char soundexCode[5];
-    generateSoundex(nullptr, soundexCode);
-    ASSERT_STREQ(soundexCode, "");
+    char soundex[5];
+    generateSoundex(nullptr, soundex);
+    ASSERT_STREQ(soundex, "");
 }
 
 TEST(SoundexTestsuite, CombinesDuplicateEncodingsWithHAndWInBetween) {
-    char soundexCode[5];
-    generateSoundex("Ashcraft", soundexCode);
-    ASSERT_STREQ(soundexCode, "A261");
+    char soundex[5];
+    generateSoundex("Ashcraft", soundex);
+    ASSERT_STREQ(soundex, "A261");
 }
 
 TEST(SoundexTestsuite, CombinesDuplicateEncodingsWithHAndWInBetween2) {
-    char soundexCode[5];
-    generateSoundex("Tymczak", soundexCode);
-    ASSERT_STREQ(soundexCode, "T520");
+    char soundex[5];
+    generateSoundex("Tymczak", soundex);
+    ASSERT_STREQ(soundex, "T520");
 }
 
 TEST(SoundexTestsuite, StopsAtThreeDigits) {
-    char soundexCode[5];
-    generateSoundex("Washington", soundexCode);
-    ASSERT_STREQ(soundexCode, "W252");
+    char soundex[5];
+    generateSoundex("Washington", soundex);
+    ASSERT_STREQ(soundex, "W252");
 }
